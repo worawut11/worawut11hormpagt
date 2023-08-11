@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ระบบรับสมัคร นักเรียน นักศึกษา ออนไลน์ : สำนักงานคณะกรมมการการอาชีวะศึกษา</title>
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- CSS -->
+    <link rel="stylesheet" href="/web/vec/student/ui/css/style-font.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/style-global.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/style-menu.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/style-button.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/style-paging.css" type="text/css">
+    <!-- JQuery -->
+    <link rel="stylesheet" href="/web/vec/student/ui/css/jquery/jquery-ui-1.10.4.custom.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/jquery/jquery-modify-custom.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/jquery/jquery-modify-dialog.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/jquery/jquery-modify-tabs.css" type="text/css">
+    <link rel="stylesheet" href="/web/vec/student/ui/css/jquery/jquery-modify-datepicker.css" type="text/css">
+    <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+    <script type="text/javascript" async=""
+        src="https://www.googletagmanager.com/gtag/js?id=G-Y1D0ZF1SZD&amp;l=dataLayer&amp;cx=c"></script>
+    <script type="text/javascript" src="/web/vec/student/ui/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/web/vec/student/ui/js/jquery-ui-1.10.3.custom.js"></script>
+    <!-- JS -->
+    <script type="text/javascript" src="/web/vec/student/ui/js/global.js"></script>
+    <!-- Validation -->
+    <link rel="stylesheet" href="/web/vec/student/ui/css/jquery/jquery-validationEngine.css" type="text/css">
+    <script type="text/javascript" src="/web/vec/student/ui/js/jquery.validationEngine-en.js"></script>
+    <script type="text/javascript" src="/web/vec/student/ui/js/jquery.validationEngine.js"></script>
+    <!-- Noty -->
+    <link rel="stylesheet" href="/web/vec/student/ui/noty/animate.css" type="text/css">
+    <script type="text/javascript" src="/web/vec/student/ui/noty/packaged/jquery.noty.packaged.min.js"></script>
+    <style type="text/css">
+        /* Style menu */
+        div#menu {
+            height: 35px;
+            width: 730px;
+            float: right;
+        }
+
+        div#menu ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border-bottom: 2px solid #4986e7;
+        }
+
+        div#menu li {
+            position: relative;
+            z-index: 9;
+            margin: 0;
+            display: inline-block;
+        }
+
+        div#menu a {
+            position: relative;
+            z-index: 10;
+            display: block;
+            height: 35px;
+            line-height: 35px;
+            text-decoration: none;
+            font-family: DbAdmanX;
+            font-size: 20px;
+            color: #555;
+            text-align: right;
+            padding-left: 15px;
+        }
+
+        div#menu a:hover {
+            color: #4986e7;
+        }
+
+        div#menu li.current {
+            background-color: #16a4fa;
+        }
+
+        div#menu li.current a {
+            font-weight: bold;
+            opacity: 1;
+            filter: alpha(opacity=100);
+        }
+
+        #block-main {
+            width: 100%;
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px;
+            -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+            -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2), 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        #block-main th.logo {
+            background: url("/web/vec/student/ui/assets/images/misc/vec-logo.png") #ffffff no-repeat 10px 10px;
+            height: 60px;
+            text-align: right;
+            padding-top: 15px;
+            padding-right: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ccc;
+        }
+
+        #block-main .txt-header {
+            font-family: DbAdmanX;
+            font-size: 28pt;
+            color: #2684D8;
+        }
+
+        .topic-sub {
+            font-family: DbAdmanX;
+            font-size: 14pt;
+            color: #A9B1B9;
+        }
+
+        .adm-detail {
+            font-size: 12px;
+            border-collapse: separate;
+            border-spacing: 0px 2px;
+        }
+
+        .adm-detail td {
+            padding: 2px 3px;
+            vertical-align: top;
+        }
+
+        .adm-detail td.label {
+            font-weight: bold;
+            text-align: right;
+            vertical-align: middle;
+            background-color: #f9f9f9;
+        }
+
+        .adm-detail td.detail {
+            font-weight: bold;
+            vertical-align: middle;
+        }
+
+        .adm-detail td .remark {
+            color: red;
+        }
+
+        fieldset {
+            border: 1px solid #333;
+            padding: 5px;
+            margin: 5px;
+        }
+
+        .adm-detail td.topic,
+        fieldset .ftopic,
+        .htopic {
+            /* text-shadow: 0 -1px 1px #CCC; */
+            /* color:#333; */
+            font-family: DbAdmanX;
+            font-weight: bold;
+            font-size: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $.fn.enterKey = function (fnc) {
+                return this.each(function () {
+                    $(this).keypress(function (ev) {
+                        var keycode = (ev.keyCode ? ev.keyCode : ev.which);
+                        if (keycode == '13') {
+                            fnc.call(this, ev);
+                        }
+                    });
+                });
+            };
+
+            $("#process-loding").dialog({
+                autoOpen: false,
+                height: 80,
+                width: 250,
+                modal: true,
+                draggable: true,
+                resizeable: false,
+                closeOnEscape: false,
+                close: function () { },
+                open: function (event, ui) {
+                    $(this).parent().children().children('.ui-dialog-titlebar-close').hide();
+                }
+            });
+
+            $("#plan-detail-dialog").dialog({
+                autoOpen: false,
+                height: 'auto',
+                width: 550,
+                resizable: false,
+                modal: true,
+                closeOnEscape: false,
+                close: function () { },
+                open: function () {
+                }
+            });
+        });
+
+        function doOpenPlanDetail(id) {
+            $.post("/web/student.htm?mode=curriculumdetail",
+                {
+                    id: id
+                }, function (results) {
+                    $("#plan-detail-dialog").dialog("open");
+                    $("#plan-detail-content").html(results);
+                });
+        }
+
+        function doRandomPage() {
+            /* if(Math.floor((Math.random() * 2) + 1) == 1) {
+                location.href='http://datacenter.vec.go.th/vec_web/admis.htm?mode=register'
+            } else if(Math.floor((Math.random() * 2) + 1) == 2) {
+                location.href='http://1.179.247.64/vec_web/admis.htm?mode=register'
+            } else { */
+            location.href = 'student.htm?mode=register'
+            /* } */
+        }
+    </script>
+    <!-- เครื่อง 147 -->
+    <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-132820733-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-132820733-1');
+    </script>
+</head>
+
+<body style>
+    <div class="box-content">
+        <table id="block-main" align="center">
+            <tbody>
+                <tr>
+                    <th class="logo">
+                        <div class="txt-header">ระบบรับสมัคร นักเรียน นักศึกษา</div>
+                        <div class="topic-sub">STUDENT ADMISSION SYSTEM</div>
+                        <div id="menu">
+                            <ul>
+                                <li>
+                                    <a href="#">หน้าแรก</a>
+                                </li>
+                                <li>
+                                    <a href="#">หลักสูตรที่เปิดรับสมัคร</a>
+                                </li>
+                                <li>
+                                    <a href="#" onclick="doRandomPage()">สมัครเรียน (ปีการศึกษา 2566/1)</a>
+                                </li>
+                                <li>
+                                    <a href="#">ตรวจสอบผลการสมัคร</a>
+                                </li>
+                                <li>
+                                    <a href="#">ติดต่อ-สอบถาม</a>
+                                </li>
+                            </ul>
+                        </div>
+                </tr>
+                <tr>
+                    <td class="box-content">
+                        <table width="100%">
+                            <tbody>
+                                <tr>
+                                    <tr>
+                                        <td width="260"><button type="button" class="btn btn-primary btn-large" style="width: 250px;" onclick="doRandomPage()">สมัครเรียน (ปีการศึกษา 2566/1)</button></td>
+                                        <td><button type="button" class="btn btn-success btn-large" style="width: 250px;" onclick="location.href='student.htm?mode=formcheck'">ตรวจสอบ/เพิ่มเติมการสมัคร</button></td>
+                                        <td align="right"><button type="button" class="btn btn-inverse btn-large" style="margin-left: 30px;" onclick="window.open('doc_admission_student.pdf','_blank')">คู่มือการสมัครเรียน (PDF)</button></td>
+                                    </tr>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="text-topic" style="margin-top: 15px;">ขั้นตอนการรับสมัคร</div>
+                        <div style="font-size: .8em;">
+                            <div style="padding:5px;color:blue;"><b><u>ขั้นตอนที่ 1 กรอกข้อมูลผู้สมัคร</u></b></div>
+                            <div style="padding:3px 0px 3px 20px;">
+                                กรอกข้อมูลส่วนตัวและคุณสมบัติของผู้สมัครผ่านระบบรับสมัครออนไลน์ โดยระบุรหัสประจำตัวประชาชน และ วัน เดือน ปี เกิด เพื่อตรวจสอบข้อมูลผู้สมัครเรียน<br>
+                                <span style="color:red;">
+                                    หมายเหตุ : นักศึกษาที่ไม่สามารถสมัครเรียนผ่านระบบออนไลน์ได้ ให้ติดต่อที่สถานศึกษาที่ต้องการสมัครเรียนด้วยตนเอง<br>
+                                </span>
+                            </div>
+                            <div style="padding:5px;color:blue;"><b><u>ขั้นตอนที่ 2 เลือกสาขาที่ต้องการสมัคร</u></b></div>
+                            <div style="padding:3px 0px 3px 20px;">
+                                เลือกสถานศึกษาและสาขาที่ต้องการสมัครเข้าศึกษาต่อ โดยผู้สมัครสามารถเลือกได้มากกว่า 1 สถานศึกษา และมากกว่า 1 สาขาวิชา<br>
+                                <span style="color:red;">หมายเหตุ : นักศึกษาสามารถตรวจสอบหลักสูตรที่แต่ละสถานศึกษาเปิดรับสมัคร วันที่เปิด-ปิดรับสมัคร วันที่สอบ ประเภทการจัดการเรียนการสอน ฯลฯ<br>
+                                โดยเลือกที่เมนู → <a href="student.htm?mode=curriculum" class="link-blue">หลักสูตรที่เปิดรับสมัคร</a></span>
+                            </div>
+                            <div style="padding:5px;color:blue;"><b><u>ขั้นตอนที่ 3 พิมพ์ใบสมัคร</u></b></div>
+                            <div style="padding:3px 0px 3px 20px;">
+                                เมื่อการสมัครผ่านระบบรับสมัครออนไลน์เสร็จสมบูรณ์แล้วให้ผู้สมัคร พิมพ์ใบสมัครและนำไปยื่นที่สถานศึกษาตามที่ตนเองได้สมัครไว้
+                            </div>
+                            <div style="padding:5px;color:blue;"><b><u>ขั้นตอนที่ 4 ยื่นใบสมัคร</u></b></div>
+                            <div style="padding:3px 0px 3px 20px;">
+                                เมื่อการสมัครเสร็จสมบูรณ์ให้ผู้สมัคร พิมพ์ใบสมัครและนำไปยื่นที่สถานศึกษาที่ได้สมัครไว้ เพื่อให้เจ้าหน้าที่ยื่นยันการสมัครอีกครั้งหนึ่ง<br>
+                                <span style="color:red;">หมายเหตุ : ในการยื่นใบสมัครให้นำเอกสารหลักฐานต่างๆตามที่ระบุในใบสมัครให้ครบถ้วน</span>
+                            </div>
+                        
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>
